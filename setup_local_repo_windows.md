@@ -86,7 +86,7 @@ GitHub Pages requires an entry file.
 
 2. Add minimal content:
 
-<!DOCTYPE html>
+```<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -95,9 +95,8 @@ GitHub Pages requires an entry file.
 <body>
   <h1>Hello, world</h1>
 </body>
-</html>
+</html>```
 
-3. Save the file.
 
 ---
 
