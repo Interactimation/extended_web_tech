@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="icon" href="pix/ico/favicon.ico">
-  <link rel="stylesheet" href="style.css">
+
   <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
   <title>A-Frame Starter</title>
 </head>
@@ -51,9 +51,10 @@
     geometry="primitive: octahedron; radius: 0.3" 
     position="0 3.5 -5" 
     rotation="0 0 0"
-    material="src:pix/IAM_logo.png; repeat: 4 1"
-    animation__rotation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"
-    animation__pos="property: position; to : 0 4 -5; dir: alternate; loop: true; easing: easeInOutSine; dur: 2000 "></a-entity>
+    material="src:#logo; repeat: 4 1"
+    animation__rot="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"
+    animation__pos="property: position; to : 0 4 -5; dir: alternate; loop: true; easing: easeInOutSine; dur: 2000 ">
+  </a-entity>
 
     <!--sky-->
     <!--notice that the "sky" here is not in the <a-entity> format-->
