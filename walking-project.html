@@ -25,11 +25,19 @@
     rotation="0 45 0">
     </a-entity>-->
 
-    <!--body-->
-    <a-entity 
+<!--body controller-->
+<a-entity
+position="-5 2.5 -5"
+animation__rot="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+
+    <!--body--> 
+    <a-entity
+    light="type: point; color: #FF0000" 
     geometry="primitive: sphere; radius: 1" 
-    material="color: #EF2D5E" 
-    position="0 3 -5">
+    material="color: #EF2D5E; emissive: #00ff00" 
+    position="5 0 0"
+    rotation=""
+    animation__rot="property: rotation; to: -45 0 0; loop: true; dur: 500; dir: alternate; easing: linear">
 
      <!--left hip-->
       <a-entity 
@@ -61,6 +69,9 @@
 
     </a-entity>
 
+    <!--body close tag-->
+    </a-entity>
+<!--body controller close tag-->
     </a-entity>
 
   
