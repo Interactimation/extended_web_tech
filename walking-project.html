@@ -14,7 +14,10 @@
     <!--assets are items meant to preload-->
     <!-- I give the asset an ID and reference it in the "material" of the "logohedron"-->
     <a-assets>
-      <img id="logo" src="pix/IAM_logo.png">
+      <img id="slats" src="pix/textures/old-metal-slats1_albedo.png">
+      <img id="slatsNorm" src="pix/textures/old-metal-slats1_normal-ogl.png">
+      <img id="grip" src="pix/textures/grip-rusted-steel_albedo.png">
+      <img id="gripNorm" src="pix/textures/grip-rusted-steel_normal-ogl.png">
     </a-assets>
 
     <!--box-->
@@ -25,69 +28,88 @@
     rotation="0 45 0">
     </a-entity>-->
 
-<!--body controller-->
-<a-entity
-position="-5 2.5 -5"
-animation__rot="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
-
-
-    <!--body--> 
-    <a-entity
-    light="type: point; color: #FF0000" 
-    geometry="primitive: sphere; radius: 1" 
-    material="color: #EF2D5E; emissive: #00ff00" 
-    position="5 0 0"
-    rotation=""
-    animation__rot="property: rotation; to: -45 0 0; loop: true; dur: 500; dir: alternate; easing: linear">
-
-     <!--left hip-->
-      <a-entity 
-    geometry="primitive: sphere; radius: 0.3" 
-    material="color: #EF2D5E" 
-    position="-0.5 -1 0"
-    rotation="45 0 0"
-    animation__rot="property: rotation; to: -45 0 0; loop: true; dur: 500; dir: alternate; easing: linear">
-<!--cylinder-->
-    <a-entity 
-    geometry="primitive: cylinder; radius: 0.25; height: 1.5" 
-    material="color: #EF2D5E"
-    position="0 -0.85 0"></a-entity>
+    <!--LIGHTS-->
+    <!--follow spot-->
+    <a-entity light="type: spot; castShadow: true;intensity: 3; angle: 25; penumbra: 0; target: #mover"
+      position="0 10 0">
     </a-entity>
-   <!-- right hip-->
+
+    <!--directional-->
+    <a-entity light="type: directional; color: #8fbcd4; intensity: 0.15" position="0 5 5" rotation="0 -45 0">
+    </a-entity>
+
+    <!--body controller-->
+    <a-entity position="0 2.5 -7"
+      animation__rot="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear">
+
+      <!--body-->
+      <a-entity id="mover" geometry="primitive: sphere; radius: 1"
+        material="src:#slats; normalMap:#slatsNorm; normalScale: 2 2 ;repeat: 4 4" position="5 0 0" rotation="0 0 15"
+        animation__rot="property: rotation; to: 0 0 -15; loop: true; dur: 700; dir: alternate; easing: linear"
+        shadow="cast: true">
+
+        <!--head-->
+        <a-entity geometry="primitive: sphere; radius: 0.5"
+           
+          position="0 1 -1"
+          rotation="-15 30 0"
+          material="src:#grip; normalMap:#gripNorm; normalScale: 4 4 ; repeat: 2 2"
+          animation__rot="property: rotation; to: -15 -30 0; loop: true; dur: 3000; dir: alternate; easing: easeInOutElastic">
+
+          <!--lefteye-->
+          <a-entity geometry="primitive: sphere; radius: 0.2" material="emissive: #00ffff; emissiveIntensity: 3"
+            position="-0.3 0 -0.3" rotation="0 0 0"
+            animation__rot="property: rotation; to: 0 0 0; loop: true; dur: 1000; dir: alternate; easing: linear">
+          </a-entity>
+
+          <!--righteye-->
+          <a-entity geometry="primitive: sphere; radius: 0.2" material="emissive: #00ffff; emissiveIntensity: 1"
+            position="0.3 0 -0.3" rotation="0 0 0"
+            animation__rot="property: rotation; to: 0 0 0; loop: true; dur: 1000; dir: alternate; easing: linear">
+          </a-entity>
+
+        </a-entity>
+
+        <!--left hip-->
+        <a-entity geometry="primitive: sphere; radius: 0.3"
+          material="src:#slats; normalMap:#slatsNorm; normalScale: 2 2 ; repeat: 1 1" position="-0.5 -1 0"
+          rotation="45 0 -7"
+          animation__rot="property: rotation; to: -45 0 -7 ; loop: true; dur: 700; dir: alternate; easing: linear">
+          <!--cylinder-->
+          <a-entity geometry="primitive: cylinder; radius: 0.25; height: 1.5" 
+          material="src:#grip; normalMap:#gripNorm; normalScale: 4 4 ; repeat: 4 3"
+            position="0 -0.85 0"></a-entity>
+        </a-entity>
+        <!-- right hip-->
+        <a-entity 
+        geometry="primitive: sphere; radius: 0.3"
+          material="src:#slats; normalMap:#slatsNorm; normalScale: 2 2 ; repeat: 1 1" position="0.5 -1 0"
+          rotation="-45 0 7"
+          animation__rot="property: rotation; to: 45 0 7; loop: true; dur: 700; dir: alternate; easing: linear">
+
+          <!--left leg-->
           <a-entity 
-    geometry="primitive: sphere; radius: 0.3" 
-    material="color: #EF2D5E" 
-    position="0.5 -1 0"
-    rotation="-45 0 0"
-      animation__rot="property: rotation; to: 45 0 0; loop: true; dur: 500; dir: alternate; easing: linear"
-    >
-    
-      <!--cylinder-->
-    <a-entity 
-    geometry="primitive: cylinder; radius: 0.25; height: 1.5" 
-    material="color: #EF2D5E"
-    position="0 -0.85 0"></a-entity>
+          geometry="primitive: cylinder; radius: 0.25; height: 1.5"  
+          material="src:#grip; normalMap:#gripNorm; normalScale: 4 4 ; repeat: 4 3"
+          position="0 -0.85 0"></a-entity>
 
+        </a-entity>
+
+        <!--body close tag-->
+      </a-entity>
+      <!--body controller close tag-->
     </a-entity>
 
-    <!--body close tag-->
-    </a-entity>
-<!--body controller close tag-->
-    </a-entity>
 
-  
 
     <!--plane-->
-    <a-entity 
-    geometry="primitive: plane; width: 12; height: 12" 
-    material="color: #7BC8A4" 
-    position="0 0 -4"
-    rotation="-90 0 0"></a-entity>
+    <a-entity geometry="primitive: plane; width: 24; height: 24" material="color: #7BC8A4" position="0 0 -4"
+      rotation="-90 0 0" shadow="receive: true"></a-entity>
 
-    
+
     <!--"logohedron"-->
     <!--notice I'm using a reference to the asset's ID-->
-    
+
     <!--<a-entity 
     geometry="primitive: octahedron; radius: 0.3" 
     position="0 3.5 -5" 
@@ -102,7 +124,7 @@ animation__rot="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:
     <!--sky-->
     <!--notice that the "sky" here is not in the <a-entity> format-->
     <!--"sky" is not meant as a geometry in the scene but a background-->
-    <a-sky color="#000000"></a-sky>
+    <a-sky color="#444"></a-sky>
 
   </a-scene>
 </body>
